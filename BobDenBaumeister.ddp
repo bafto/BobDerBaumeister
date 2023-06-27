@@ -1,0 +1,134 @@
+Binde "Duden/Texte" ein.
+Binde "Duden/Listen" ein.
+Binde "Duden/Ausgabe" ein.
+Binde "Duden/UnterProzess" ein.
+Binde "Duden/Laufzeit" ein.
+
+[Die DDP Datei, die kompiliert wird (standardmäßig main.ddp)]
+Der Text Hauptprogramm ist "main.ddp".
+[Der Name der Ausgabe Datei (ohne .exe Endung)]
+Der Text Programmname ist "main".
+[Ob temporäre Dateien gelöscht werden sollen (--nichts_loeschen)]
+Der Boolean nichts_gelöscht_werden_soll ist falsch.
+[--wortreich]
+Der Boolean wortreich ist falsch.
+[--externe_gcc_optionen]
+Die Text Liste externe_gcc_optionen ist eine leere Text Liste.
+[--gcc_optionen]
+Die Text Liste gcc_optionen ist eine leere Text Liste.
+
+Die öffentliche Funktion Setze_Hauptdatei mit dem Parameter pfad vom Typ Text, gibt nichts zurück, macht:
+    Speichere pfad in Hauptprogramm.
+Und kann so benutzt werden:
+    "Die Hauptdatei ist <pfad>"
+
+Die öffentliche Funktion Setze_ProgrammName mit dem Parameter name vom Typ Text, gibt nichts zurück, macht:
+    Speichere name in Programmname.
+Und kann so benutzt werden:
+    "Der Programmname wird <name>"
+
+Die öffentliche Funktion Setze_NichtsLöschen gibt nichts zurück, macht:
+    nichts_gelöscht_werden_soll ist wahr.
+Und kann so benutzt werden:
+    "Behalte temporäre Dateien" oder
+    "Behalte temporaere Dateien"
+
+Die öffentliche Funktion Setze_Wortreich gibt nichts zurück, macht:
+    wortreich ist wahr.
+Und kann so benutzt werden:
+    "Sei wortreich"
+
+Die öffentliche Funktion Füge_ExtGccOption_Hinzu mit dem Parameter option vom Typ Text, gibt nichts zurück, macht:
+    Füge option an externe_gcc_optionen an.
+Und kann so benutzt werden:
+    "Jede .c Datei erhält die Option <option>" oder
+    "Jede C Datei erhält die Option <option>" oder
+    "Füge die externe GCC Option <option> hinzu" oder
+    "füge die externe GCC Option <option> hinzu"
+
+Die öffentliche Funktion Füge_ExtGccOptionen_Hinzu mit dem Parameter optionen vom Typ Text Liste, gibt nichts zurück, macht:
+    Für jeden Text option in optionen, füge die externe GCC Option option hinzu.
+Und kann so benutzt werden:
+    "Jede .c Datei erhält die Optionen <optionen>" oder
+    "Jede C Datei erhält die Optionen <optionen>"
+
+Die öffentliche Funktion Füge_IncludePfad_Hinzu mit dem Parameter pfad vom Typ Text, gibt nichts zurück, macht:
+    Jede .c Datei erhält die Option ("-I" verkettet mit pfad).
+Und kann so benutzt werden:
+    "C Header Dateien befinden sich in <pfad>"
+
+Die öffentliche Funktion Füge_LinkerOption_Hinzu mit dem Parameter option vom Typ Text, gibt nichts zurück, macht:
+    Füge option an gcc_optionen an.
+Und kann so benutzt werden:
+    "Der Linker erhält die Option <option>" oder
+    "Füge die Linker Option <option> hinzu" oder
+    "füge die Linker Option <option> hinzu"
+
+Die öffentliche Funktion Füge_LinkerOptionen_Hinzu mit dem Parameter optionen vom Typ Text Liste, gibt nichts zurück, macht:
+    Für jeden Text option in optionen, füge die Linker Option option hinzu.
+Und kann so benutzt werden:
+    "Der Linker erhält die Optionen <optionen>" oder
+    "Füge die Linker Optionen <optionen> hinzu" oder
+    "füge die Linker Optionen <optionen> hinzu"
+
+Die öffentliche Funktion Füge_BibliotheksPfad_Hinzu mit dem Parameter pfad vom Typ Text, gibt nichts zurück, macht:
+    Der Linker erhält die Option ("-L" verkettet mit pfad).
+Und kann so benutzt werden:
+    "Bibliotheken befinden sich in <pfad>" oder
+    "C Bibliotheken befinden sich in <pfad>"
+
+Die öffentliche Funktion Füge_Bibliothek_Hinzu mit dem Parameter name vom Typ Text, gibt nichts zurück, macht:
+    Der Linker erhält die Option ("-l" verkettet mit name).
+Und kann so benutzt werden:
+    "Das Programm benutzt die C Bibliothek <name>" oder
+    "Das Programm benutzt die Bibliothek <name>"
+
+Die öffentliche Funktion BaueDasProgramm gibt nichts zurück, macht:
+    Wenn das Betriebssystem gleich "Windows" ist, Füge ".exe" an Programmname an.
+
+    Die Text Liste args ist eine Liste, die aus 
+    "kompiliere", Hauptprogramm, "-o", Programmname
+    besteht.
+
+    Wenn nichts_gelöscht_werden_soll, Füge "--nichts_loeschen" an args an.
+    Wenn wortreich, Füge "--wortreich" an args an.
+
+    Der Text ext_gcc_args ist "".
+    Für jeden Text option in externe_gcc_optionen, mache:
+        Füge option an ext_gcc_args an.
+        Füge ' ' an ext_gcc_args an.
+    Lösche das Element an der Stelle (die Länge von ext_gcc_args) aus ext_gcc_args.
+    
+
+    Füge ("--externe_gcc_optionen=" verkettet mit ext_gcc_args) an args an.
+
+    Der Text gcc_args ist "".
+    Für jeden Text option in gcc_optionen, mache:
+        Füge option an gcc_args an.
+        Füge ' ' an gcc_args an.
+    Lösche das Element an der Stelle (die Länge von gcc_args) aus gcc_args.
+
+    Füge ("--gcc_optionen=" verkettet mit gcc_args) an args an.
+
+    Schreibe args auf eine Zeile.
+
+    Der Text stdout ist "".
+    Der Text stderr ist "".
+    Der Text Fehler ist "".
+
+    Die Zahl exit_code ist der Rückgabe Wert vom 
+    "kddp" mit den Argumenten args, 
+    der Eingabe "", 
+    der Ausgabe stdout und stderr 
+    und dem Fehler Fehler.
+
+    Wenn Fehler ungleich "" ist, dann:
+        Schreibe den Fehler "Fehler beim ausführen von kddp: ".
+        Schreibe den Fehler Fehler.
+    Sonst:
+        Schreibe stdout.
+        Schreibe den Fehler stderr.
+
+    Beende das Programm mit Code exit_code.
+Und kann so benutzt werden:
+    "Baue das Programm"

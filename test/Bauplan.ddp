@@ -1,0 +1,12 @@
+Binde "../BobDenBaumeister" ein.
+
+Die Hauptdatei ist "test.ddp".
+Der Programmname wird "bauplan_test".
+
+Sei wortreich.
+
+C Header Dateien befinden sich in "../../../GoRepos/DDP-Projekt/Kompilierer/build/DDP/lib/runtime/include/".
+Bibliotheken befinden sich in "lib".
+Das Programm benutzt die Bibliothek "testlib".
+
+Baue das Programm.

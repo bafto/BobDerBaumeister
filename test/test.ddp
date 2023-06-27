@@ -1,0 +1,16 @@
+Binde "Duden/Ausgabe" ein.
+
+Die Funktion hallo_lib mit dem Parameter x vom Typ Zahl, gibt nichts zurück,
+ist in "test.c" definiert
+und kann so benutzt werden:
+    "hallo_lib(<x>)"
+
+Die Funktion hallo_test mit dem Parameter x vom Typ Text, gibt nichts zurück,
+ist in "test.c" definiert
+Und kann so benutzt werden:
+    "hallo_text(<x>)"
+
+Schreibe "hi" auf eine Zeile.
+hallo_lib(69).
+Schreibe '\n'.
+hallo_text("sdfsdfsdf\n").
